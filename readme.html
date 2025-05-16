@@ -1,98 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta name="viewport" content="width=device-width" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="robots" content="noindex,nofollow" />
-	<title>WordPress &#8250; ReadMe</title>
-	<link rel="stylesheet" href="wp-admin/css/install.css?ver=20100228" type="text/css" />
-</head>
-<body>
-<h1 id="logo">
-	<a href="https://wordpress.org/"><img alt="WordPress" src="wp-admin/images/wordpress-logo.png" /></a>
-</h1>
-<p style="text-align: center">Semantic Personal Publishing Platform</p>
+Tài liệu Hướng dẫn Theme Travel
+Tài liệu này cung cấp hướng dẫn chi tiết về cách cài đặt và sử dụng theme Travel cho WordPress. Hãy làm theo các bước dưới đây để cấu hình theme, import Advanced Custom Fields (ACF), tạo template, và quản lý custom post type "Travel".
+Yêu cầu trước khi bắt đầu
+Trước khi bắt đầu, hãy đảm bảo bạn đã có:
 
-<h2>First Things First</h2>
-<p>Welcome. WordPress is a very special project to me. Every developer and contributor adds something unique to the mix, and together we create something beautiful that I am proud to be a part of. Thousands of hours have gone into WordPress, and we are dedicated to making it better every day. Thank you for making it part of your world.</p>
-<p style="text-align: right">&#8212; Matt Mullenweg</p>
+WordPress đã được cài đặt và hoạt động trên máy chủ hoặc môi trường local.
+Các file của theme Travel (ví dụ: wp-content/themes/travel-theme).
+Plugin Advanced Custom Fields (ACF) Pro đã được cài đặt và kích hoạt.
+Kiến thức cơ bản về WordPress, PHP và ACF.
 
-<h2>Installation: Famous 5-minute install</h2>
-<ol>
-	<li>Unzip the package in an empty directory and upload everything.</li>
-	<li>Open <span class="file"><a href="wp-admin/install.php">wp-admin/install.php</a></span> in your browser. It will take you through the process to set up a <code>wp-config.php</code> file with your database connection details.
-		<ol>
-			<li>If for some reason this does not work, do not worry. It may not work on all web hosts. Open up <code>wp-config-sample.php</code> with a text editor like WordPad or similar and fill in your database connection details.</li>
-			<li>Save the file as <code>wp-config.php</code> and upload it.</li>
-			<li>Open <span class="file"><a href="wp-admin/install.php">wp-admin/install.php</a></span> in your browser.</li>
-		</ol>
-	</li>
-	<li>Once the configuration file is set up, the installer will set up the tables needed for your site. If there is an error, double check your <code>wp-config.php</code> file, and try again. If it fails again, please go to the <a href="https://wordpress.org/support/forums/">WordPress support forums</a> with as much data as you can gather.</li>
-	<li><strong>If you did not enter a password, note the password given to you.</strong> If you did not provide a username, it will be <code>admin</code>.</li>
-	<li>The installer should then send you to the <a href="wp-login.php">login page</a>. Sign in with the username and password you chose during the installation. If a password was generated for you, you can then click on &#8220;Profile&#8221; to change the password.</li>
-</ol>
+Bước 1: Cài đặt và Kích hoạt Theme
 
-<h2>Updating</h2>
-<h3>Using the Automatic Updater</h3>
-<ol>
-	<li>Open <span class="file"><a href="wp-admin/update-core.php">wp-admin/update-core.php</a></span> in your browser and follow the instructions.</li>
-	<li>You wanted more, perhaps? That&#8217;s it!</li>
-</ol>
+Sao chép thư mục theme (travel-theme) vào thư mục wp-content/themes/ của WordPress.
+Đăng nhập vào bảng điều khiển quản trị WordPress.
+Vào Giao diện > Themes.
+Tìm "ThemesTest" và nhấn Kích hoạt.
 
-<h3>Updating Manually</h3>
-<ol>
-	<li>Before you update anything, make sure you have backup copies of any files you may have modified such as <code>index.php</code>.</li>
-	<li>Delete your old WordPress files, saving ones you&#8217;ve modified.</li>
-	<li>Upload the new files.</li>
-	<li>Point your browser to <span class="file"><a href="wp-admin/upgrade.php">/wp-admin/upgrade.php</a>.</span></li>
-</ol>
+Bước 2: Import ACF Fields
+Theme này sử dụng Advanced Custom Fields (ACF) để quản lý các trường tùy chỉnh cho trang, bài viết và custom post type "Travel". Làm theo các bước sau để import các nhóm trường ACF:
+2.1 Export ACF Fields (Nếu cần)
+Nếu bạn đã thiết lập các trường ACF trên một trang phát triển, hãy export chúng:
 
-<h2>Migrating from other systems</h2>
-<p>WordPress can <a href="https://developer.wordpress.org/advanced-administration/wordpress/import/">import from a number of systems</a>. First you need to get WordPress installed and working as described above, before using <a href="wp-admin/import.php">our import tools</a>.</p>
+Vào Custom Fields > Công cụ trong bảng điều khiển WordPress.
+Chọn các nhóm trường (ví dụ: Section Container, Information Travel).
+Nhấn Tạo PHP hoặc export dưới dạng JSON.
 
-<h2>System Requirements</h2>
-<ul>
-	<li><a href="https://www.php.net/">PHP</a> version <strong>7.2.24</strong> or greater.</li>
-	<li><a href="https://www.mysql.com/">MySQL</a> version <strong>5.5.5</strong> or greater.</li>
-</ul>
+2.2 Import ACF Fields
+Theme bao gồm một file JSON chứa các trường ACF tại travel-theme/acf-json/acf_fields.json. Để import:
 
-<h3>Recommendations</h3>
-<ul>
-	<li><a href="https://www.php.net/">PHP</a> version <strong>7.4</strong> or greater.</li>
-	<li><a href="https://www.mysql.com/">MySQL</a> version <strong>8.0</strong> or greater OR <a href="https://mariadb.org/">MariaDB</a> version <strong>10.5</strong> or greater.</li>
-	<li>The <a href="https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">mod_rewrite</a> Apache module.</li>
-	<li><a href="https://wordpress.org/news/2016/12/moving-toward-ssl/">HTTPS</a> support.</li>
-	<li>A link to <a href="https://wordpress.org/">wordpress.org</a> on your site.</li>
-</ul>
+Vào Custom Fields > Công cụ trong bảng điều khiển WordPress.
+Trong mục Import Field Groups, nhấn Chọn File.
+Chọn file acf_fields.json từ travel-theme/acf-json/.
+Nhấn Import.
+Xác minh rằng các nhóm trường sau đã được import:
+Section Container: Dùng cho nội dung linh hoạt của trang chủ (ví dụ: hero_section, section_form, v.v.).
+Information Travel: Dùng cho custom post type "Travel" (các trường như price, address, rating).
 
-<h2>Online Resources</h2>
-<p>If you have any questions that are not addressed in this document, please take advantage of WordPress&#8217; numerous online resources:</p>
-<dl>
-	<dt><a href="https://wordpress.org/documentation/">HelpHub</a></dt>
-		<dd>HelpHub is the encyclopedia of all things WordPress. It is the most comprehensive source of information for WordPress available.</dd>
-	<dt><a href="https://wordpress.org/news/">The WordPress Blog</a></dt>
-		<dd>This is where you&#8217;ll find the latest updates and news related to WordPress. Recent WordPress news appears in your administrative dashboard by default.</dd>
-	<dt><a href="https://planet.wordpress.org/">WordPress Planet</a></dt>
-		<dd>The WordPress Planet is a news aggregator that brings together posts from WordPress blogs around the web.</dd>
-	<dt><a href="https://wordpress.org/support/forums/">WordPress Support Forums</a></dt>
-		<dd>If you&#8217;ve looked everywhere and still cannot find an answer, the support forums are very active and have a large community ready to help. To help them help you be sure to use a descriptive thread title and describe your question in as much detail as possible.</dd>
-	<dt><a href="https://make.wordpress.org/support/handbook/appendix/other-support-locations/introduction-to-irc/">WordPress <abbr>IRC</abbr> (Internet Relay Chat) Channel</a></dt>
-		<dd>There is an online chat channel that is used for discussion among people who use WordPress and occasionally support topics. The above wiki page should point you in the right direction. (<a href="https://web.libera.chat/#wordpress">irc.libera.chat #wordpress</a>)</dd>
-</dl>
 
-<h2>Final Notes</h2>
-<ul>
-	<li>If you have any suggestions, ideas, or comments, or if you (gasp!) found a bug, join us in the <a href="https://wordpress.org/support/forums/">Support Forums</a>.</li>
-	<li>WordPress has a robust plugin <abbr>API</abbr> (Application Programming Interface) that makes extending the code easy. If you are a developer interested in utilizing this, see the <a href="https://developer.wordpress.org/plugins/">Plugin Developer Handbook</a>. You shouldn&#8217;t modify any of the core code.</li>
-</ul>
 
-<h2>Share the Love</h2>
-<p>WordPress has no multi-million dollar marketing campaign or celebrity sponsors, but we do have something even better&#8212;you. If you enjoy WordPress please consider telling a friend, setting it up for someone less knowledgeable than yourself, or writing the author of a media article that overlooks us.</p>
+Ngoài ra, nếu theme có chứa mã PHP cho các trường ACF (ví dụ: trong travel-theme/acf-fields.php), bạn có thể thêm mã này vào file functions.php để tự động đăng ký các trường.
+Bước 3: Tạo và Liên kết Template với ACF Fields
+Theme sử dụng các template tùy chỉnh để hiển thị nội dung từ ACF trên trang chủ.
+3.1 Kiểm tra File Template
+Theme đã bao gồm file homepage.php trong thư mục gốc của theme (travel-theme/homepage.php). Đây là template chính cho trang chủ, được thiết kế để làm việc với nhóm trường ACF Section Container.
+3.2 Liên kết Template với Trang
 
-<p>WordPress is the official continuation of b2/caf&#233;log, which came from Michel V. The work has been continued by the <a href="https://wordpress.org/about/">WordPress developers</a>. If you would like to support WordPress, please consider <a href="https://wordpress.org/donate/">donating</a>.</p>
+Tạo một trang mới trong WordPress:
+Vào Trang > Thêm mới.
+Đặt tiêu đề (ví dụ: "Trang chủ").
+Lưu trang.
 
-<h2>License</h2>
-<p>WordPress is free software, and is released under the terms of the <abbr>GPL</abbr> (GNU General Public License) version 2 or (at your option) any later version. See <a href="license.txt">license.txt</a>.</p>
 
-</body>
-</html>
+Gán template cho trang:
+Bên phải giao diện chỉnh sửa trang, trong mục Thuộc tính trang, chọn Template là "Homepage".
+Lưu lại.
+
+
+Thêm nội dung ACF:
+Cuộn xuống phần Section Container trong giao diện chỉnh sửa trang.
+Thêm các layout như hero_section, section_form, v.v., và điền dữ liệu (hình ảnh, tiêu đề, mô tả, v.v.).
+Lưu trang.
+
+Sau đó tiến hành thêm nội dung cho các menu như main và footer
+
+3.3 Cấu trúc của Template
+File homepage.php sử dụng vòng lặp have_rows('section_container') để hiển thị các layout động từ ACF. Ví dụ:
+
+hero_section: Hiển thị tiêu đề, mô tả, nút và hình ảnh.
+section_form: Hiển thị form với placeholder và icon submit.
+
+Nếu bạn cần tạo thêm template, hãy sao chép cấu trúc của homepage.php và điều chỉnh theo nhu cầu.
+Bước 4: Tạo Custom Post Type "Travel"
+Theme sử dụng custom post type "Travel" để quản lý các bài viết liên quan đến địa điểm du lịch.
+4.1 Đăng ký Post Type
+Custom post type "Travel" đã được đăng ký sẵn trong file functions.php của theme. Kiểm tra đoạn code sau trong travel-theme/functions.php:
+
+
+4.2 Tạo Bài viết Travel
+
+Sau khi đăng ký post type, bạn sẽ thấy mục Travels trong menu admin của WordPress.
+Vào Travels > Add New để tạo bài viết mới:
+Tiêu đề: Tên địa điểm du lịch (ví dụ: "Paris").
+Nội dung: Mô tả chi tiết về địa điểm.
+Hình ảnh nổi bật: Thêm hình ảnh chính của địa điểm.
+Travel Type: Chọn hoặc tạo danh mục (ví dụ: "City", "Beach").
+Information Travel: Điền các trường ACF như:
+Price: Giá (ví dụ: "500").
+Address: Địa chỉ (ví dụ: "Paris, France").
+Rating: Đánh giá (ví dụ: "4.8").
+
+
+
+
+Lưu bài viết.
+
+4.3 Hiển thị Travel Posts
+
+Các bài viết "Travel" được hiển thị trên trang chủ thông qua các layout như slider_travel và section_travel trong homepage.php.
+Mỗi bài viết hiển thị tiêu đề, hình ảnh, giá, địa chỉ, đánh giá và nút "See More" dẫn đến trang chi tiết.
+
+Lưu danh mục "Loại Travel" và bài viết "Travel" để sử dụng trong các bước tiếp theo
+
+Bước 5: Cài đặt và Tùy chỉnh Khác
+5.1 Cài đặt Swiper cho Slider
+Theme sử dụng thư viện Swiper để tạo slider trong layout slider_travel. Các file đã được enqueue trong homepage.php:
+
+Swiper CSS: https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css
+Swiper JS: https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js
+
+Nếu bạn cần tùy chỉnh slider, hãy chỉnh sửa file /js/custom-scripts.js.
+5.2 Tùy chỉnh Theme
+
+CSS: File style.css trong travel-theme chứa các style của theme. Bạn có thể chỉnh sửa để thay đổi giao diện.
+Functions.php: File này chứa các hàm tùy chỉnh như đăng ký post type, enqueue scripts/styles, v.v.
+
+Bước 6: Kiểm tra và Triển khai
+
+Truy cập trang chủ (http://your-site.com) để kiểm tra giao diện.
+Đảm bảo các layout ACF hiển thị đúng (hero, slider, form, v.v.).
+Kiểm tra các bài viết "Travel" hiển thị trong slider và section travel.
+Nếu gặp lỗi, kiểm tra:
+Các trường ACF đã được import đúng chưa.
+Custom post type "Travel" đã được đăng ký và có dữ liệu.
+Các file CSS/JS đã được load đúng chưa (xem trong console trình duyệt).
+
+
+
+Hỗ trợ
+Nếu bạn gặp vấn đề hoặc cần tùy chỉnh thêm, hãy liên hệ với nhóm phát triển theme hoặc tạo issue trên repository của theme.
+Chúc bạn thành công với Travel Theme!
